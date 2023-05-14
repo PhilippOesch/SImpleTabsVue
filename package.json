@@ -1,27 +1,29 @@
 {
-    "name": "SimpleTabs-Vue",
-    "private": true,
-    "version": "0.0.0",
+    "name": "simple-tabs-vue",
+    "private": false,
+    "version": "0.0.3",
     "type": "module",
+    "license": "MIT",
     "files": [
         "dist"
     ],
-    "main": "./dist/simple-tabs-vue.umd.cjs",
-    "module": "./dist/simple-tabs-vue.js",
+    "main": "./dist/simple-tabs-vue.umd.js",
+    "module": "./dist/simple-tabs-vue.es.js",
     "exports": {
         ".": {
-            "import": "./dist/simple-tabs-vue.js",
-            "require": "./dist/simple-tabs-vue.umd.cjs"
+            "import": "./dist/simple-tabs.es.js",
+            "require": "./dist/simple-tabs.umd.js"
         },
-        "./style.css": "./dist/style.css"
+        "./dist/style.css": "./dist/style.css"
     },
     "scripts": {
         "generate:types": "vue-tsc --declaration --emitDeclarationOnly --outdir ./dist",
         "dev": "vite",
-        "build": "vite build && npm run generate:types",
+        "build": "vite build",
         "preview": "vite preview"
     },
     "dependencies": {
+        "simple-tabs-vue": "^0.0.1",
         "vue": "^3.2.47"
     },
     "devDependencies": {

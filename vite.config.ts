@@ -9,17 +9,17 @@ export default defineConfig({
         lib: {
             // the entry file that is loaded whenever someone imports
             // your plugin in their app
-            entry: path.resolve(__dirname, 'src/SimpleTabs/TabPluginVue.ts'),
+            entry: path.resolve(__dirname, 'src/SimpleTabs/index.ts'),
 
             // the exposed global variable
             // is required when formats includes 'umd' or 'iife'
-            name: 'SimpleTabs',
+            name: 'simple-tabs',
 
             // the proper extensions will be added, ie:
             // name.js (es module)
             // name.umd.cjs) (common js module)
             // default fileName is the name option of package.json
-            fileName: 'simple-tabs-vue',
+            fileName: (format) => `simple-tabs.${format}.js`,
         },
         rollupOptions: {
             // make sure to externalize deps that shouldn't be bundled

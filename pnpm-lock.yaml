@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  simple-tabs-vue:
+    specifier: ^0.0.1
+    version: 0.0.1
   vue:
     specifier: ^3.2.47
     version: 3.2.47
@@ -803,6 +806,12 @@ packages:
   /siginfo@2.0.0:
     resolution: {integrity: sha512-ybx0WO1/8bSBLEWXZvEd7gMW3Sn3JFlW3TvX1nREbDLRNQNaeNN8WK0meBwPdAaOI7TtRRRJn/Es1zhrrCHu7g==}
     dev: true
+
+  /simple-tabs-vue@0.0.1:
+    resolution: {integrity: sha512-vvo2JTcyD+6fMCoerZmk2vzvQyp0naeiltv3wS1k5HPFc9TIUauxYxU0GvNGsREjzZR70ikUNeP8PyTPICCptQ==}
+    dependencies:
+      vue: 3.2.47
+    dev: false
 
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
