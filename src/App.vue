@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import TabSwitch from './components/SimpleTabSwitch.vue';
-import Tab from './components/SimpleTab.vue';
+import TabSwitch from './SimpleTabs/components/SimpleTabSwitch.vue';
+import Tab from './SimpleTabs/components/SimpleTab.vue';
 </script>
 
 <template>

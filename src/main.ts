@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import './style.css';
 import App from './App.vue';
-import tabPluginVue from './TabPluginVue';
+import tabPluginVue from './SimpleTabs/TabPluginVue';
 
 const app = createApp(App);
 

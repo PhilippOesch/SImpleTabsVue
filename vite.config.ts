@@ -9,7 +9,7 @@ export default defineConfig({
         lib: {
             // the entry file that is loaded whenever someone imports
             // your plugin in their app
-            entry: path.resolve(__dirname, 'src/TabPluginVue.ts'),
+            entry: path.resolve(__dirname, 'src/SimpleTabs/TabPluginVue.ts'),
 
             // the exposed global variable
             // is required when formats includes 'umd' or 'iife'
