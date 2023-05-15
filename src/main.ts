@@ -1,9 +1,9 @@
 import { createApp } from 'vue';
 import './style.css';
 import App from './App.vue';
-import tabPluginVue from './SimpleTabs/TabPluginVue';
+import { SimpleTabsPlugin } from './SimpleTabsPlugin';
 
 const app = createApp(App);
 
-app.use(tabPluginVue);
+app.use(SimpleTabsPlugin);
 app.mount('#app');

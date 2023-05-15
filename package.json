@@ -1,36 +1,38 @@
 {
     "name": "simple-tabs-vue",
     "private": false,
-    "version": "0.0.3",
+    "version": "0.0.1",
     "type": "module",
     "license": "MIT",
     "files": [
         "dist"
     ],
-    "main": "./dist/simple-tabs-vue.umd.js",
-    "module": "./dist/simple-tabs-vue.es.js",
+    "main": "dist/simple-tabs-vue.cjs.js",
+    "module": "dist/simple-tabs-vue.es.js",
     "exports": {
         ".": {
-            "import": "./dist/simple-tabs.es.js",
-            "require": "./dist/simple-tabs.umd.js"
+            "types": "./dist/SimpleTabsPlugin.d.ts",
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.cjs.js"
         },
-        "./dist/style.css": "./dist/style.css"
+        "./styles.css": "./dist/SimpleTabsPlugin.css"
     },
     "scripts": {
-        "generate:types": "vue-tsc --declaration --emitDeclarationOnly --outdir ./dist",
         "dev": "vite",
-        "build": "vite build",
+        "build": "vue-tsc && vite build",
         "preview": "vite preview"
     },
     "dependencies": {
-        "simple-tabs-vue": "^0.0.1",
         "vue": "^3.2.47"
     },
     "devDependencies": {
         "@types/node": "^20.1.4",
         "@vitejs/plugin-vue": "^4.1.0",
+        "path": "^0.12.7",
+        "rollup-plugin-typescript2": "^0.34.1",
         "typescript": "^5.0.2",
         "vite": "^4.3.2",
+        "vite-plugin-dts": "^2.3.0",
         "vitest": "^0.31.0",
         "vue-tsc": "^1.4.2"
     }

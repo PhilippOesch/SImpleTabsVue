@@ -8,16 +8,10 @@
 import { computed } from 'vue';
 import { useTabStore } from '../composable/tabStore';
 
-const props = defineProps({
-    tabGroup: {
-        type: String,
-        required: true,
-    },
-    tabName: {
-        type: String,
-        required: true,
-    },
-});
+const props = defineProps<{
+    tabGroup: string;
+    tabName: string;
+}>();
 
 const tabStore = useTabStore();
 tabStore.registerTab(props.tabGroup, props.tabName);

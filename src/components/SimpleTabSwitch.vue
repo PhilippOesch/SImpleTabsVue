@@ -21,18 +21,11 @@
 import { computed } from 'vue';
 import { useTabStore, SwitchState, SwitchEvent } from '../composable/tabStore';
 
-const props = defineProps({
-    groupName: {
-        type: String,
-        required: true,
-    },
-    defaultTab: {
-        type: String,
-    },
-    onBeforeSwitch: {
-        type: Function,
-    },
-});
+const props = defineProps<{
+    groupName: string;
+    defaultTab?: string;
+    onBeforeSwitch?: Function;
+}>();
 
 const tabStore = useTabStore();
 tabStore.registerTabGroup(props.groupName);

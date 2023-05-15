@@ -1,6 +1,6 @@
 import { reactive } from 'vue';
 
-export interface TabGroup {
+interface TabGroup {
     name: string;
     openTab?: string;
     tabs: any;
@@ -10,7 +10,6 @@ export enum SwitchState {
     Before,
     After,
 }
-
 export interface SwitchEvent {
     prevTab: string;
     newTab: string;
@@ -18,26 +17,22 @@ export interface SwitchEvent {
     isSuccessful?: boolean;
 }
 
-export interface SimpleTabStore {
-    switchTab(groupName: string, tabName: string): boolean;
-}
-
-class TabStoreState implements SimpleTabStore {
+export class TabStoreState {
     public tabGroups: Map<string, TabGroup>;
 
     constructor() {
         this.tabGroups = new Map();
     }
 
-    getOpenTab(groupName: string): string | undefined {
+    public getOpenTab(groupName: string): string | undefined {
         return this.tabGroups.get(groupName)?.openTab;
     }
 
-    getGroupTabs(groupName: string): any {
+    public getGroupTabs(groupName: string): any {
         return this.tabGroups.get(groupName)!.tabs;
     }
 
-    registerTabGroup(groupName: string): void {
+    public registerTabGroup(groupName: string): void {
         if (!this.tabGroups.has(groupName)) {
             this.tabGroups.set(
                 groupName,
@@ -53,7 +48,7 @@ class TabStoreState implements SimpleTabStore {
         }
     }
 
-    registerTab(groupName: string, tabName: string): void {
+    public registerTab(groupName: string, tabName: string): void {
         this.registerTabGroup(groupName);
         const tabGroup: TabGroup = this.tabGroups.get(groupName)!;
         const exists = tabGroup.tabs.dataSet.has(tabName);
@@ -70,7 +65,7 @@ class TabStoreState implements SimpleTabStore {
         tabGroup.tabs.reactiveKey += 1;
     }
 
-    setDefaultOpenTab(groupName: string, tabName: string): boolean {
+    public setDefaultOpenTab(groupName: string, tabName: string): boolean {
         if (!this.tabGroups.has(groupName)) {
             console.warn(`The Tab Group ${groupName} was not initialized`);
             return false;
@@ -82,7 +77,10 @@ class TabStoreState implements SimpleTabStore {
         return true;
     }
 
-    previewSwitch(groupName: string, tabName: string): SwitchEvent | undefined {
+    public previewSwitch(
+        groupName: string,
+        tabName: string
+    ): SwitchEvent | undefined {
         if (!this.tabGroups.has(groupName)) {
             console.warn(`The Tab Group ${groupName} was not initialized`);
             return undefined;
@@ -114,7 +112,7 @@ class TabStoreState implements SimpleTabStore {
         };
     }
 
-    switchTab(
+    public switchTab(
         groupName: string,
         tabName: string,
         doValidate: boolean = true
@@ -132,6 +130,8 @@ class TabStoreState implements SimpleTabStore {
 
 const tabStore = new TabStoreState();
 
-export function useTabStore(): TabStoreState {
+function useTabStore(): TabStoreState {
     return tabStore;
 }
+
+export { useTabStore };
