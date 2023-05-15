@@ -1,15 +1,25 @@
 import { reactive } from 'vue';
 
+/**
+ * A Tab group
+ */
 interface TabGroup {
     name: string;
     openTab?: string;
     tabs: any;
 }
 
+/**
+ * Switch States
+ */
 export enum SwitchState {
     Before,
     After,
 }
+
+/**
+ * A Switch Event
+ */
 export interface SwitchEvent {
     prevTab: string;
     newTab: string;
@@ -17,6 +27,9 @@ export interface SwitchEvent {
     isSuccessful?: boolean;
 }
 
+/**
+ * A Tab store object
+ */
 export class TabStoreState {
     public tabGroups: Map<string, TabGroup>;
 
@@ -24,14 +37,28 @@ export class TabStoreState {
         this.tabGroups = new Map();
     }
 
+    /**
+     * Get the opened tab
+     * @param groupName the group name to get the open tab for
+     * @returns the opened tab
+     */
     public getOpenTab(groupName: string): string | undefined {
         return this.tabGroups.get(groupName)?.openTab;
     }
 
+    /**
+     * Get all tabs of a group
+     * @param groupName the group
+     * @returns all tabs
+     */
     public getGroupTabs(groupName: string): any {
         return this.tabGroups.get(groupName)!.tabs;
     }
 
+    /**
+     * Register a group
+     * @param groupName the group to register
+     */
     public registerTabGroup(groupName: string): void {
         if (!this.tabGroups.has(groupName)) {
             this.tabGroups.set(
@@ -48,6 +75,11 @@ export class TabStoreState {
         }
     }
 
+    /**
+     * Register a tab
+     * @param groupName The group to register the tab for
+     * @param tabName the tab to register
+     */
     public registerTab(groupName: string, tabName: string): void {
         this.registerTabGroup(groupName);
         const tabGroup: TabGroup = this.tabGroups.get(groupName)!;
@@ -77,6 +109,12 @@ export class TabStoreState {
         return true;
     }
 
+    /**
+     * preview and validate tab switch
+     * @param groupName the tab group
+     * @param tabName the tab to switch to
+     * @returns a switch event
+     */
     public previewSwitch(
         groupName: string,
         tabName: string
@@ -112,6 +150,13 @@ export class TabStoreState {
         };
     }
 
+    /**
+     * Switch tabs
+     * @param groupName the group
+     * @param tabName the tab to switch to
+     * @param doValidate do validate before the switch
+     * @returns
+     */
     public switchTab(
         groupName: string,
         tabName: string,
@@ -130,6 +175,10 @@ export class TabStoreState {
 
 const tabStore = new TabStoreState();
 
+/**
+ * Return the tab store
+ * @returns A TabStoreState
+ */
 function useTabStore(): TabStoreState {
     return tabStore;
 }

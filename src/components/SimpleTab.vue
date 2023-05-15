@@ -1,5 +1,5 @@
 <template>
-    <div class="tabContainer" v-if="isVisible">
+    <div class="simpleT-tab" v-if="isVisible">
         <slot></slot>
     </div>
 </template>

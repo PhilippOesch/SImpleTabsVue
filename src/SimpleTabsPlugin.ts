@@ -1,4 +1,4 @@
-import { useTabStore } from './composable/tabStore';
+import { useTabStore, SwitchEvent } from './composable/tabStore';
 import SimpleTab from './components/SimpleTab.vue';
 import SimpleTabSwitch from './components/SimpleTabSwitch.vue';
 
@@ -11,4 +11,10 @@ const SimpleTabsPlugin = {
     },
 };
 
-export { SimpleTabsPlugin, SimpleTab, SimpleTabSwitch, useTabStore };
+export {
+    SimpleTabsPlugin,
+    SimpleTab,
+    SimpleTabSwitch,
+    useTabStore,
+    type SwitchEvent,
+};

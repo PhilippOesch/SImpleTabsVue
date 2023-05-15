@@ -1,7 +1,7 @@
 <template>
     <div>
         <div
-            class="simpleT-tabSwitchContainer"
+            class="simpleT-tabSwitcher"
             v-if="tabs.dataSet"
             :key="tabs.reactiveKey"
         >
@@ -24,7 +24,7 @@ import { useTabStore, SwitchState, SwitchEvent } from '../composable/tabStore';
 const props = defineProps<{
     groupName: string;
     defaultTab?: string;
-    onBeforeSwitch?: Function;
+    onBeforeSwitch?: (switchEvent?: SwitchEvent) => boolean;
 }>();
 
 const tabStore = useTabStore();
@@ -57,7 +57,7 @@ function onSwitchTab(groupName: string, tabName: string) {
         emits('beforeSwitchTab', prevSwitchEvent);
         let shouldResume: boolean = true;
         if (props.onBeforeSwitch !== undefined) {
-            shouldResume = <boolean>props.onBeforeSwitch();
+            shouldResume = <boolean>props.onBeforeSwitch(prevSwitchEvent);
         }
 
         let afterEvent: SwitchEvent = {
