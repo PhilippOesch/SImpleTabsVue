@@ -1,3 +1,4 @@
+import { FilterOption, FilterFactory, IFilter } from '@/utils/Filters';
 import { reactive } from 'vue';
 
 /**
@@ -5,7 +6,7 @@ import { reactive } from 'vue';
  */
 interface TabGroup {
     name: string;
-    openTab?: string;
+    openTabs?: string[];
     tabs: any;
 }
 
@@ -21,8 +22,8 @@ export enum SwitchState {
  * A Switch Event
  */
 export interface SwitchEvent {
-    prevTab: string;
-    newTab: string;
+    prevTab: string[];
+    newTab: string[];
     state: SwitchState;
     isSuccessful?: boolean;
 }
@@ -33,8 +34,11 @@ export interface SwitchEvent {
 export class TabStoreState {
     public tabGroups: Map<string, TabGroup>;
 
+    private filterFactory: FilterFactory;
+
     constructor() {
         this.tabGroups = new Map();
+        this.filterFactory = new FilterFactory();
     }
 
     /**
@@ -42,8 +46,8 @@ export class TabStoreState {
      * @param groupName the group name to get the open tab for
      * @returns the opened tab
      */
-    public getOpenTab(groupName: string): string | undefined {
-        return this.tabGroups.get(groupName)?.openTab;
+    public getOpenTab(groupName: string): string[] | undefined {
+        return this.tabGroups.get(groupName)?.openTabs;
     }
 
     /**
@@ -89,8 +93,8 @@ export class TabStoreState {
             return;
         }
 
-        if (tabGroup.tabs.dataSet.size === 0 && !tabGroup.openTab) {
-            tabGroup.openTab = tabName;
+        if (tabGroup.tabs.dataSet.size === 0 && !tabGroup.openTabs) {
+            tabGroup.openTabs = [tabName];
         }
 
         tabGroup.tabs.dataSet.add(tabName);
@@ -105,7 +109,7 @@ export class TabStoreState {
 
         const tabGroup: TabGroup = this.tabGroups.get(groupName)!;
 
-        tabGroup.openTab = tabName;
+        tabGroup.openTabs = [tabName];
         return true;
     }
 
@@ -126,12 +130,14 @@ export class TabStoreState {
 
         const tabGroup: TabGroup = this.tabGroups.get(groupName)!;
 
-        if (!tabGroup.openTab) {
-            console.warn(`The tab group ${groupName} has no defined open tab`);
+        if (!tabGroup.openTabs) {
+            console.warn(`The tab group ${groupName} has no defined open tabs`);
             return undefined;
         }
 
-        if (tabGroup.openTab === tabName) {
+        const hasTab = tabGroup.openTabs.some((val) => val === tabName);
+
+        if (hasTab) {
             console.warn(`The tab ${tabName} is already open`);
             return undefined;
         }
@@ -144,8 +150,8 @@ export class TabStoreState {
         }
 
         return {
-            prevTab: tabGroup.openTab,
-            newTab: tabName,
+            prevTab: tabGroup.openTabs,
+            newTab: [tabName],
             state: SwitchState.Before,
         };
     }
@@ -168,8 +174,34 @@ export class TabStoreState {
 
         const tabGroup: TabGroup = this.tabGroups.get(groupName)!;
 
-        tabGroup.openTab = tabName;
+        tabGroup.openTabs = [tabName];
         return true;
+    }
+
+    public filterTabs(
+        groupName: string,
+        filter: string,
+        filterOption: FilterOption = FilterOption.Contains
+    ): SwitchEvent | undefined {
+        if (!this.tabGroups.has(groupName)) {
+            console.warn(`The Tab Group ${groupName} was not initialized`);
+            return undefined;
+        }
+
+        const tabGroup: TabGroup = this.tabGroups.get(groupName)!;
+
+        const allTabs: string[] = Array.from(tabGroup.tabs.dataSet);
+        const filterer: IFilter = this.filterFactory.create(filterOption);
+        const found: string[] = filterer.filter(allTabs, filter);
+        const oldTabs = tabGroup.openTabs;
+        tabGroup.openTabs = found;
+
+        return {
+            prevTab: <string[]>oldTabs,
+            newTab: tabGroup.openTabs,
+            state: SwitchState.After,
+            isSuccessful: true,
+        };
     }
 }
 

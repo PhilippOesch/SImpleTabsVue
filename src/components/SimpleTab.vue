@@ -18,8 +18,9 @@ tabStore.registerTab(props.tabGroup, props.tabName);
 
 const isVisible = computed(() => {
     const selectedTab = tabStore.getOpenTab(props.tabGroup);
-    if (selectedTab !== undefined && selectedTab === props.tabName) {
-        return true;
+    if (selectedTab !== undefined) {
+        const tabSelected = selectedTab.some((val) => val === props.tabName);
+        return tabSelected;
     }
     return false;
 });

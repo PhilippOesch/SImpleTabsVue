@@ -36,8 +36,8 @@ if (props.defaultTab) {
 }
 
 function getClasses(item: any, index: number) {
-    const isOpen =
-        openTab.value === item || (openTab.value === undefined && index === 0);
+    const isTabOpen = openTab.value?.some((val) => val === item);
+    const isOpen = isTabOpen || (openTab.value?.length === 0 && index === 0);
     return [
         'simpleT-tabSwitchBtn',
         isOpen ? 'simpleT-tabOpened' : 'simpleT-tabClosed',
