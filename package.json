@@ -1,7 +1,7 @@
 {
     "name": "simple-tabs-vue",
     "private": false,
-    "version": "0.0.6",
+    "version": "0.0.7",
     "type": "module",
     "description": "Just a very simple Tab Plugin for Vue. Basically no styling. Just pure component and pure utility.",
     "license": "MIT",
@@ -19,8 +19,9 @@
         "type": "git",
         "url": "git+https://github.com/PhilippOesch/SImpleTabsVue.git"
     },
-    "main": "dist/simple-tabs-vue.cjs.js",
-    "module": "dist/simple-tabs-vue.es.js",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.es.js",
+    "types": "./dist/SimpleTabsPlugin.d.ts",
     "exports": {
         ".": {
             "types": "./dist/SimpleTabsPlugin.d.ts",

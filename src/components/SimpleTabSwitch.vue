@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useTabStore, SwitchState, SwitchEvent } from '../composable/tabStore';
+import { useTabStore, SwitchEvent } from '../composable/tabStore';
 
 const props = defineProps<{
     groupName: string;
@@ -63,7 +63,7 @@ function onSwitchTab(groupName: string, tabName: string) {
         let afterEvent: SwitchEvent = {
             prevTab: prevSwitchEvent.prevTab,
             newTab: prevSwitchEvent.newTab,
-            state: SwitchState.After,
+            state: 'After',
         };
         if (shouldResume) {
             tabStore.switchTab(groupName, tabName, false);

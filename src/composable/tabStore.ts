@@ -1,4 +1,4 @@
-import { FilterOption, FilterFactory, IFilter } from '@/utils/Filters';
+import { FilterOption, FilterFactory, IFilter } from '../utils/Filters';
 import { reactive } from 'vue';
 
 /**
@@ -13,10 +13,7 @@ interface TabGroup {
 /**
  * Switch States
  */
-export enum SwitchState {
-    Before,
-    After,
-}
+type SwitchState = 'After' | 'Before';
 
 /**
  * A Switch Event
@@ -152,7 +149,7 @@ export class TabStoreState {
         return {
             prevTab: tabGroup.openTabs,
             newTab: [tabName],
-            state: SwitchState.Before,
+            state: 'Before',
         };
     }
 
@@ -181,7 +178,7 @@ export class TabStoreState {
     public filterTabs(
         groupName: string,
         filter: string,
-        filterOption: FilterOption = FilterOption.Contains
+        filterOption: FilterOption = 'Contains'
     ): SwitchEvent | undefined {
         if (!this.tabGroups.has(groupName)) {
             console.warn(`The Tab Group ${groupName} was not initialized`);
@@ -199,7 +196,7 @@ export class TabStoreState {
         return {
             prevTab: <string[]>oldTabs,
             newTab: tabGroup.openTabs,
-            state: SwitchState.After,
+            state: 'After',
             isSuccessful: true,
         };
     }
@@ -215,4 +212,4 @@ function useTabStore(): TabStoreState {
     return tabStore;
 }
 
-export { useTabStore };
+export { useTabStore, type SwitchState };

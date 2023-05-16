@@ -3,12 +3,11 @@ import TabSwitch from './components/SimpleTabSwitch.vue';
 import Tab from './components/SimpleTab.vue';
 
 import { useTabStore } from './composable/tabStore';
-import { FilterOption } from './SimpleTabsPlugin';
 const tabStore = useTabStore();
 
 tabStore.switchTab('TabGroup1', 'Tab2');
 
-tabStore.filterTabs('TabGroup1', 'Book', FilterOption.StartsWith);
+tabStore.filterTabs('TabGroup1', 'Book', 'StartsWith');
 </script>
 
 <template>
