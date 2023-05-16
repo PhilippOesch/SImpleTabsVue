@@ -1,4 +1,9 @@
-import { useTabStore, SwitchEvent, SwitchState } from './composable/tabStore';
+import {
+    useTabStore,
+    SwitchEvent,
+    SwitchState,
+    TabStoreState,
+} from './composable/tabStore';
 import { FilterOption } from './utils/Filters';
 import SimpleTab from './components/SimpleTab.vue';
 import SimpleTabSwitch from './components/SimpleTabSwitch.vue';
@@ -17,6 +22,7 @@ export {
     SimpleTab,
     SimpleTabSwitch,
     useTabStore,
+    TabStoreState,
     type SwitchEvent,
     type FilterOption,
     type SwitchState,
