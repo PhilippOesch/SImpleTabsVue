@@ -77,6 +77,13 @@ class TabStoreState {
     }
 
     /**
+     * reset the store
+     */
+    public reset() {
+        this.tabGroups = new Map();
+    }
+
+    /**
      * Register a tab
      * @param groupName The group to register the tab for
      * @param tabName the tab to register

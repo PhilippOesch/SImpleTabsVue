@@ -1,7 +1,7 @@
 {
     "name": "simple-tabs-vue",
     "private": false,
-    "version": "0.0.7",
+    "version": "0.0.8",
     "type": "module",
     "description": "Just a very simple Tab Plugin for Vue. Basically no styling. Just pure component and pure utility.",
     "license": "MIT",
@@ -33,7 +33,9 @@
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc && vite build",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "test": "vitest",
+        "coverage": "vitest run --coverage"
     },
     "dependencies": {
         "vue": "^3.2.47"
@@ -41,6 +43,8 @@
     "devDependencies": {
         "@types/node": "^20.1.4",
         "@vitejs/plugin-vue": "^4.1.0",
+        "@vue/test-utils": "^2.3.2",
+        "jsdom": "^22.0.0",
         "path": "^0.12.7",
         "rollup-plugin-typescript2": "^0.34.1",
         "typescript": "^5.0.2",
