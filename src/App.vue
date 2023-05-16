@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import TabSwitch from './components/SimpleTabSwitch.vue';
 import Tab from './components/SimpleTab.vue';
+
+import { useTabStore } from './composable/tabStore';
+import { FilterOption } from './SimpleTabsPlugin';
+const tabStore = useTabStore();
+
+tabStore.switchTab('TabGroup1', 'Tab2');
+
+tabStore.filterTabs('TabGroup1', 'Book', FilterOption.StartsWith);
 </script>
 
 <template>

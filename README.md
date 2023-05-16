@@ -14,6 +14,27 @@ Just a very simple Tab Plugin for Vue. Basically no styling. Just pure component
 
 SimpleTabSwitch can emit the events *beforeSwitchTab* and *afterSwitchTab* which return the previous and subsequent tab. There is also the possibility to provide the callback *onBeforeSwitch* that is called before the switch actually happening. When returning false the switch event will abort.
 
+## Additional Utility
+
+You can also call to switch the tab in your code. Just use the tab store of the plugin and and call the *switchTab* method.
+
+```ts
+...
+import { useTabStore } from './composable/tabStore';
+const tabStore = useTabStore();
+
+function switchToTab2(){
+    tabStore.switchTab('TabGroup1', 'Tab2');
+}
+...
+```
+The tab Store also provides a filter:
+
+```ts
+// opens all tabs where the tab Name starts with 'Book'
+tabStore.filterTabs('TabGroup1', 'Book', FilterOption.StartsWith);
+```
+
 ## Customizing
 
 ### Styling Classes
