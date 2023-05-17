@@ -1,7 +1,7 @@
 {
     "name": "simple-tabs-vue",
     "private": false,
-    "version": "0.0.8",
+    "version": "0.0.10",
     "type": "module",
     "description": "Just a very simple Tab Plugin for Vue. Basically no styling. Just pure component and pure utility.",
     "license": "MIT",
@@ -43,6 +43,7 @@
     "devDependencies": {
         "@types/node": "^20.1.4",
         "@vitejs/plugin-vue": "^4.1.0",
+        "@vitest/coverage-c8": "^0.31.1",
         "@vue/test-utils": "^2.3.2",
         "jsdom": "^22.0.0",
         "path": "^0.12.7",

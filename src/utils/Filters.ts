@@ -48,7 +48,7 @@ class FilterEndsWith implements IFilter {
  */
 class FilterRegex implements IFilter {
     filter(array: string[], filter: string): string[] {
-        const regex = new RegExp(filter);
+        const regex = new RegExp(filter, "gm");
         return array.filter((val) => val.search(regex) !== -1);
     }
 }
