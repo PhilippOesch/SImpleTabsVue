@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import './style.css';
 import App from './App.vue';
 import { SimpleTabsPlugin } from './SimpleTabsPlugin';
-import 'simple-tabs-vue/styles.css';
+import './style.css';
 
 const app = createApp(App);
 
