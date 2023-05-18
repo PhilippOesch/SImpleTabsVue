@@ -4,7 +4,7 @@ import {
     SimpleTab,
     useTabStore,
     TabStoreState,
-} from 'simple-tabs-vue';
+} from './SimpleTabsPlugin';
 // import Tab from './components/SimpleTab.vue';
 
 // import { useTabStore } from './composable/tabStore';
