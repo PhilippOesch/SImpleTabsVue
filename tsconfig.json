@@ -15,14 +15,15 @@
         "declaration": true,
         "baseUrl": ".",
         "resolveJsonModule": true,
-        "isolatedModules": true,
-        "noEmit": true,
+        "isolatedModules": false,
+        // "noEmit": true,
         "jsx": "preserve",
         "paths": {
             "@/*": ["./src/*"]
         },
         /* Linting */
         "strict": true,
+        "noEmit": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
