@@ -5,9 +5,6 @@ import {
     useTabStore,
     TabStoreState,
 } from './SimpleTabsPlugin';
-// import Tab from './components/SimpleTab.vue';
-
-// import { useTabStore } from './composable/tabStore';
 const tabStore: TabStoreState = useTabStore();
 
 tabStore.switchTab('TabGroup1', 'Tab2');

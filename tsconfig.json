@@ -8,27 +8,26 @@
 
         /* Bundler mode */
         "moduleResolution": "Node",
-        "allowImportingTsExtensions": false,
+        "allowImportingTsExtensions": true,
         "allowJs": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
-        "declaration": true,
         "baseUrl": ".",
         "resolveJsonModule": true,
         "isolatedModules": false,
         // "noEmit": true,
         "jsx": "preserve",
-        "paths": {
-            "@/*": ["./src/*"]
-        },
         /* Linting */
+        "emitDeclarationOnly": true,
+        "declaration": true,
         "strict": true,
-        "noEmit": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
-        "types": ["vitest/globals"]
+        "types": ["vitest/globals"],
+        "declarationDir": "dist/dts"
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-    "references": [{ "path": "./tsconfig.node.json" }]
+    "references": [{ "path": "./tsconfig.node.json" }],
+    "exclude": ["src/main.ts", "src/App.vue", "src/test"]
 }
