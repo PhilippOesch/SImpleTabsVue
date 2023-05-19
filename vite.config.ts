@@ -19,7 +19,7 @@ export default defineConfig({
             fileName: (format) => `index.${format}.js`,
         },
         rollupOptions: {
-            external: ['vue'],
+            external: ['vue', './src/App.vue', './src/main.ts'],
             output: {
                 globals: {
                     vue: 'Vue',

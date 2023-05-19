@@ -49,7 +49,7 @@ The tab Store also provides a filter:
 
 ```ts
 // opens all tabs where the tab Name starts with 'Book'
-tabStore.filterTabs('TabGroup1', 'Book', 'StartsWith');
+tabStore.filterTabs('TabGroup1', 'Book', FilterOption.StartsWith);
 ```
 
 ## Customizing

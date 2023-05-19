@@ -18,9 +18,13 @@
         "downlevelIteration": true,
         // "noEmit": true,
         "jsx": "preserve",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
         /* Linting */
         "emitDeclarationOnly": true,
         "declaration": true,
+        "declarationMap": true,
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
@@ -29,6 +33,5 @@
         "declarationDir": "dist/dts"
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-    "references": [{ "path": "./tsconfig.node.json" }],
-    "exclude": ["src/main.ts", "src/App.vue", "src/test"]
+    "references": [{ "path": "./tsconfig.node.json" }]
 }

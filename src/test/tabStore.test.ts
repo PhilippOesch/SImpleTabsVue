@@ -1,4 +1,4 @@
-import { useTabStore } from '../SimpleTabsPlugin';
+import { useTabStore } from '@/index';
 
 const tabStore = useTabStore();
 

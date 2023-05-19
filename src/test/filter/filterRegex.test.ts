@@ -1,7 +1,7 @@
-import { FilterFactory } from '../../utils/Filters';
+import { FilterFactory, FilterOption } from '@/utils/Filters';
 
 const filterFactory = new FilterFactory();
-const filterer = filterFactory.create('Regex');
+const filterer = filterFactory.create(FilterOption.Regex);
 const regexString = '\\d{3,}'; //find at least 3 digit long number
 
 test('has at least 3 digit number', () => {

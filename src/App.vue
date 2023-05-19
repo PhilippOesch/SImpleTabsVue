@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { SimpleTabSwitch, SimpleTab, useTabStore, TabStoreState } from './';
+import {
+    SimpleTabSwitch,
+    SimpleTab,
+    useTabStore,
+    TabStoreState,
+    FilterOption,
+} from './';
 const tabStore: TabStoreState = useTabStore();
 
 tabStore.switchTab('TabGroup1', 'Tab2');
 
-tabStore.filterTabs('TabGroup1', 'Book', 'StartsWith');
+tabStore.filterTabs('TabGroup1', 'Book', FilterOption.StartsWith);
 </script>
 
 <template>

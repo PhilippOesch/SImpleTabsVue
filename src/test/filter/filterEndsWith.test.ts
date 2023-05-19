@@ -1,7 +1,7 @@
-import { FilterFactory } from '../../utils/Filters';
+import { FilterFactory, FilterOption } from '@/utils/Filters';
 
 const filterFactory = new FilterFactory();
-const filterer = filterFactory.create('EndWith');
+const filterer = filterFactory.create(FilterOption.EndWith);
 
 test('Ends with filter "12" was found', () => {
     const filter: string = '12';

@@ -14,7 +14,13 @@ interface IFilter {
  * Frick Enums in TypeScript, honestly!
  * The just do not compile properly.
  */
-type FilterOption = 'Contains' | 'EndWith' | 'StartsWith' | 'Regex';
+// type FilterOption = 'Contains' | 'EndWith' | 'StartsWith' | 'Regex';
+enum FilterOption {
+    Contains,
+    EndWith,
+    StartsWith,
+    Regex,
+}
 
 /**
  * Contains string
@@ -48,25 +54,25 @@ class FilterEndsWith implements IFilter {
  */
 class FilterRegex implements IFilter {
     filter(array: string[], filter: string): string[] {
-        const regex = new RegExp(filter, "gm");
+        const regex = new RegExp(filter, 'gm');
         return array.filter((val) => val.search(regex) !== -1);
     }
 }
 
 class FilterFactory {
-    create(filterOption: FilterOption) {
+    create(filterOption: FilterOption): IFilter {
         switch (filterOption) {
             default:
-            case 'Contains':
+            case FilterOption.Contains:
                 return new FilterContains();
-            case 'EndWith':
+            case FilterOption.EndWith:
                 return new FilterEndsWith();
-            case 'StartsWith':
+            case FilterOption.StartsWith:
                 return new FilterStartsWith();
-            case 'Regex':
+            case FilterOption.Regex:
                 return new FilterRegex();
         }
     }
 }
 
-export { FilterFactory, type FilterOption, type IFilter };
+export { FilterFactory, FilterOption, type IFilter };

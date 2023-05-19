@@ -185,7 +185,7 @@ class TabStoreState {
     public filterTabs(
         groupName: string,
         filter: string,
-        filterOption: FilterOption = 'Contains'
+        filterOption: FilterOption = FilterOption.Contains
     ): SwitchEvent | undefined {
         if (!this.tabGroups.has(groupName)) {
             console.warn(`The Tab Group ${groupName} was not initialized`);
