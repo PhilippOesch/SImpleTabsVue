@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "useDefineForClassFields": true,
+        "useDefineForClassFields": false,
         "module": "ESNext",
         "lib": ["ESNext", "DOM"],
         "skipLibCheck": true,
@@ -15,6 +15,7 @@
         "baseUrl": ".",
         "resolveJsonModule": true,
         "isolatedModules": false,
+        "downlevelIteration": true,
         // "noEmit": true,
         "jsx": "preserve",
         /* Linting */

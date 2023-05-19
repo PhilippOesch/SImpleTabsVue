@@ -13,7 +13,7 @@ export default defineConfig({
     build: {
         cssCodeSplit: true,
         lib: {
-            entry: './src/SimpleTabsPlugin.ts',
+            entry: './src/index.ts',
             formats: ['es', 'cjs'],
             name: 'simple-tabs-vue',
             fileName: (format) => `index.${format}.js`,

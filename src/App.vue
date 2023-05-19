@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import {
-    SimpleTabSwitch,
-    SimpleTab,
-    useTabStore,
-    TabStoreState,
-} from './SimpleTabsPlugin';
+import { SimpleTabSwitch, SimpleTab, useTabStore, TabStoreState } from './';
 const tabStore: TabStoreState = useTabStore();
 
 tabStore.switchTab('TabGroup1', 'Tab2');
