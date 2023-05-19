@@ -4,9 +4,13 @@ index.html
 tsconfig.json
 tsconfig.node.json
 vite.config.ts
+vitest.config.ts
+coverage
 
 # remove App.vue and main.ts from beeing published
 dist/dts/App.vue.d.ts
 dist/dts/main.d.ts
 dist/dts/App.vue.d.ts.map
 dist/dts/main.d.ts.map
+dist/dts/test
+dist/test
