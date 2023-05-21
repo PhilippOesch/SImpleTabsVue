@@ -13,12 +13,15 @@ interface TabGroup {
 /**
  * Switch States
  */
-type SwitchState = 'After' | 'Before';
+enum SwitchState {
+    After,
+    Before,
+}
 
 /**
  * A Switch Event
  */
-export interface SwitchEvent {
+interface SwitchEvent {
     prevTab: string[];
     newTab: string[];
     state: SwitchState;
@@ -156,7 +159,7 @@ class SimpleTabStore {
         return {
             prevTab: tabGroup.openTabs,
             newTab: [tabName],
-            state: 'Before',
+            state: SwitchState.Before,
         };
     }
 
@@ -203,7 +206,7 @@ class SimpleTabStore {
         return {
             prevTab: <string[]>oldTabs,
             newTab: tabGroup.openTabs,
-            state: 'After',
+            state: SwitchState.After,
             isSuccessful: true,
         };
     }
@@ -215,13 +218,14 @@ const tabStore = new SimpleTabStore();
  * Return the tab store
  * @returns A TabStoreState
  */
-function useSimpleTabStore(): SimpleTabStore {
+function useSimpleTabsStore(): SimpleTabStore {
     return tabStore;
 }
 
 export {
-    useSimpleTabStore as useTabStore,
-    type SwitchState,
+    useSimpleTabsStore,
+    SwitchState,
     type TabGroup,
-    SimpleTabStore as TabStoreState,
+    SimpleTabStore,
+    type SwitchEvent,
 };

@@ -1,6 +1,6 @@
 import {
-    useTabStore,
-    TabStoreState,
+    useSimpleTabsStore,
+    SimpleTabStore,
     SwitchEvent,
     SwitchState,
 } from './composable/tabStore';
@@ -21,9 +21,9 @@ export {
     SimpleTabsPlugin,
     SimpleTab,
     SimpleTabSwitch,
-    useTabStore,
-    TabStoreState,
+    useSimpleTabsStore,
+    SimpleTabStore,
     FilterOption,
-    SwitchEvent,
+    type SwitchEvent,
     SwitchState,
 };

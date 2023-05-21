@@ -1,6 +1,6 @@
-import { useTabStore } from '@/index';
+import { useSimpleTabsStore } from '@/index';
 
-const tabStore = useTabStore();
+const tabStore = useSimpleTabsStore();
 
 beforeEach(() => {
     tabStore.reset();

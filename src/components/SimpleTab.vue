@@ -6,14 +6,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useTabStore } from '@/composable/tabStore';
+import { useSimpleTabsStore } from '@/composable/tabStore';
 
 const props = defineProps<{
     tabGroup: string;
     tabName: string;
 }>();
 
-const tabStore = useTabStore();
+const tabStore = useSimpleTabsStore();
 tabStore.registerTab(props.tabGroup, props.tabName);
 
 const isVisible = computed(() => {

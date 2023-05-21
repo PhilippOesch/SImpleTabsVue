@@ -2,11 +2,11 @@
 import {
     SimpleTabSwitch,
     SimpleTab,
-    useTabStore,
-    TabStoreState,
+    useSimpleTabsStore,
+    SimpleTabStore,
     FilterOption,
 } from './';
-const tabStore: TabStoreState = useTabStore();
+const tabStore: SimpleTabStore = useSimpleTabsStore();
 
 tabStore.switchTab('TabGroup1', 'Tab2');
 
