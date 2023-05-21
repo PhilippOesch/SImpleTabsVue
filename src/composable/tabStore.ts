@@ -28,7 +28,7 @@ export interface SwitchEvent {
 /**
  * A Tab store object
  */
-class TabStoreState {
+class SimpleTabStore {
     public tabGroups: Map<string, TabGroup>;
 
     private filterFactory: FilterFactory;
@@ -209,14 +209,19 @@ class TabStoreState {
     }
 }
 
-const tabStore = new TabStoreState();
+const tabStore = new SimpleTabStore();
 
 /**
  * Return the tab store
  * @returns A TabStoreState
  */
-function useTabStore(): TabStoreState {
+function useSimpleTabStore(): SimpleTabStore {
     return tabStore;
 }
 
-export { useTabStore, type SwitchState, type TabGroup, TabStoreState };
+export {
+    useSimpleTabStore as useTabStore,
+    type SwitchState,
+    type TabGroup,
+    SimpleTabStore as TabStoreState,
+};

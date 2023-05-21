@@ -6,7 +6,7 @@ import SimpleTabSwitch from './components/SimpleTabSwitch.vue';
 import type { App } from 'vue';
 
 const SimpleTabsPlugin = {
-    install(app: App) {
+    install(app: App): any {
         app.component('SimpleTabSwitch', SimpleTabSwitch);
         app.component('SimpleTab', SimpleTab);
     },

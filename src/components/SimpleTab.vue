@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useTabStore } from '../composable/tabStore';
+import { useTabStore } from '@/composable/tabStore';
 
 const props = defineProps<{
     tabGroup: string;
@@ -25,5 +25,3 @@ const isVisible = computed(() => {
     return false;
 });
 </script>
-
-<style scoped></style>

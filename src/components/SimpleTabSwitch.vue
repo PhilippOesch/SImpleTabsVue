@@ -1,25 +1,23 @@
 <template>
-    <div>
-        <div
-            class="simpleT-tabSwitcher"
-            v-if="tabs.dataSet"
-            :key="tabs.reactiveKey"
-        >
-            <template v-for="(item, index) in tabs.dataSet">
-                <div
-                    :class="getClasses(item, index)"
-                    @click="() => onSwitchTab(groupName, item)"
-                >
-                    {{ item }}
-                </div>
-            </template>
-        </div>
+    <div
+        class="simpleT-tabSwitcher"
+        v-if="tabs.dataSet"
+        :key="tabs.reactiveKey"
+    >
+        <template v-for="(item, index) in tabs.dataSet">
+            <div
+                :class="getClasses(item, index)"
+                @click="() => onSwitchTab(groupName, item)"
+            >
+                {{ item }}
+            </div>
+        </template>
     </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useTabStore, SwitchEvent } from '../composable/tabStore';
+import { useTabStore, SwitchEvent } from '@/composable/tabStore';
 
 const props = defineProps<{
     groupName: string;
@@ -35,7 +33,7 @@ if (props.defaultTab) {
     tabStore.setDefaultOpenTab(props.groupName, props.defaultTab);
 }
 
-function getClasses(item: any, index: number) {
+function getClasses(item: any, index: number): string[] {
     const isTabOpen = openTab.value?.some((val) => val === item);
     const isOpen = isTabOpen || (openTab.value?.length === 0 && index === 0);
     return [
