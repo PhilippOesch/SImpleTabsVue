@@ -10,7 +10,8 @@
         "components",
         "plugin",
         "simple",
-        "ui"
+        "ui",
+        "unstyled"
     ],
     "repository": {
         "type": "git",

@@ -19,11 +19,32 @@
 import { computed } from 'vue';
 import { useTabStore, SwitchEvent } from '@/composable/tabStore';
 
-const props = defineProps<{
+interface SimpleTabSwitchProps {
+    /**
+     * Group Name to register.
+     */
     groupName: string;
+    /**
+     * Custom classes to add to a button when the tab is open.
+     */
+    customBtnOpenClasses?: string[];
+    /**
+     * custom classes to add to a switch button.
+     */
+    customBtnClasses?: string[];
+    /**
+     * name of the tab to open as default.
+     */
     defaultTab?: string;
+    /**
+     * Callback before a switch happens.
+     * @param switchEvent the switch event that took place.
+     * @returns whether to continue the switch event.
+     */
     onBeforeSwitch?: (switchEvent?: SwitchEvent) => boolean;
-}>();
+}
+
+const props = defineProps<SimpleTabSwitchProps>();
 
 const tabStore = useTabStore();
 tabStore.registerTabGroup(props.groupName);
@@ -38,8 +59,23 @@ function getClasses(item: any, index: number): string[] {
     const isOpen = isTabOpen || (openTab.value?.length === 0 && index === 0);
     return [
         'simpleT-tabSwitchBtn',
-        isOpen ? 'simpleT-tabOpened' : 'simpleT-tabClosed',
+        getCustomBtnClasses(),
+        isOpen ? getBtnOpenClasses() : 'simpleT-tabClosed',
     ];
+}
+
+function getCustomBtnClasses(): string {
+    if (props.customBtnClasses !== undefined) {
+        return props.customBtnClasses.join(' ');
+    }
+    return '';
+}
+
+function getBtnOpenClasses(): string {
+    if (props.customBtnOpenClasses) {
+        return ['simpleT-tabOpened', ...props.customBtnOpenClasses].join(' ');
+    }
+    return 'simpleT-tabOpened';
 }
 
 const openTab = computed(() => {
@@ -48,7 +84,12 @@ const openTab = computed(() => {
 
 const emits = defineEmits(['beforeSwitchTab', 'afterSwitchTab']);
 
-function onSwitchTab(groupName: string, tabName: string) {
+/**
+ * Initiating a tab switch.
+ * @param groupName The group name to switch the tab on.
+ * @param tabName The tab to switch to
+ */
+function onSwitchTab(groupName: string, tabName: string): void {
     const prevSwitchEvent = tabStore.previewSwitch(groupName, tabName);
 
     if (prevSwitchEvent !== undefined) {
