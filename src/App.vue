@@ -43,6 +43,9 @@ tabStore.filterTabs('TabGroup1', 'Book', FilterOption.StartsWith);
     <SimpleTab tab-group="TabGroup2" tab-name="Tab2-6">
         Content Tab2-6
     </SimpleTab>
+    <SimpleTab tab-group="TabGroup2" :tab-name="['Tab2-4', 'Tab2-2']">
+        Open in Group 2 on Tab 4 and 2
+    </SimpleTab>
 </template>
 
 <style></style>

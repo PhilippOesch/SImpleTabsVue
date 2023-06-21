@@ -89,23 +89,26 @@ class SimpleTabStore {
     /**
      * Register a tab
      * @param groupName The group to register the tab for
-     * @param tabName the tab to register
+     * @param tabNames Mutliple tab names can be defined for when a tab should be open on multiple selections.
      */
-    public registerTab(groupName: string, tabName: string): void {
-        this.registerTabGroup(groupName);
-        const tabGroup: TabGroup = this.tabGroups.get(groupName)!;
-        const exists = tabGroup.tabs.dataSet.has(tabName);
+    public registerTab(groupName: string, tabNames: string[]): void {
+        for (const tabName of tabNames) {
+            this.registerTabGroup(groupName);
+            const tabGroup: TabGroup = this.tabGroups.get(groupName)!;
+            const exists = tabGroup.tabs.dataSet.has(tabName);
+            console.log(exists);
 
-        if (exists) {
-            return;
+            if (exists) {
+                return;
+            }
+
+            if (tabGroup.tabs.dataSet.size === 0 && !tabGroup.openTabs) {
+                tabGroup.openTabs = [tabName];
+            }
+
+            tabGroup.tabs.dataSet.add(tabName);
+            tabGroup.tabs.reactiveKey += 1;
         }
-
-        if (tabGroup.tabs.dataSet.size === 0 && !tabGroup.openTabs) {
-            tabGroup.openTabs = [tabName];
-        }
-
-        tabGroup.tabs.dataSet.add(tabName);
-        tabGroup.tabs.reactiveKey += 1;
     }
 
     public setDefaultOpenTab(groupName: string, tabName: string): boolean {

@@ -10,16 +10,30 @@ import { useSimpleTabsStore } from '@/composable/tabStore';
 
 const props = defineProps<{
     tabGroup: string;
-    tabName: string;
+    tabName: string | string[];
 }>();
 
 const tabStore = useSimpleTabsStore();
-tabStore.registerTab(props.tabGroup, props.tabName);
+
+let tabs: Array<string>;
+
+console.log('is entry');
+if (props.tabName instanceof Array) {
+    console.log('is array');
+    tabStore.registerTab(props.tabGroup, props.tabName);
+    tabs = props.tabName;
+} else if (typeof props.tabName === 'string') {
+    console.log('is string');
+    tabStore.registerTab(props.tabGroup, [<string>props.tabName]);
+    tabs = [<string>props.tabName];
+}
 
 const isVisible = computed(() => {
     const selectedTab = tabStore.getOpenTab(props.tabGroup);
     if (selectedTab !== undefined) {
-        const tabSelected = selectedTab.some((val) => val === props.tabName);
+        const tabSelected = selectedTab.some((val) => {
+            return tabs.find((tab) => tab === val);
+        });
         return tabSelected;
     }
     return false;

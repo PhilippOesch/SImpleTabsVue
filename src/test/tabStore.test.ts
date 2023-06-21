@@ -16,7 +16,7 @@ test('register group', () => {
 test('register tab', () => {
     const groupName = 'group1';
     const tabName = 'tab1';
-    tabStore.registerTab(groupName, tabName);
+    tabStore.registerTab(groupName, [tabName]);
 
     assert.isTrue(tabStore.tabGroups.has(groupName));
 
