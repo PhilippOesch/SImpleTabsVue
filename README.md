@@ -17,6 +17,12 @@ Just a very simple Tab Plugin for Vue. Basically no styling. Just pure utility.
 
 ## Usage
 
+First you have to install the package:
+
+```bash
+npm install simple-tabs-vue
+```
+
 You can define the components globaly as follows:
 
 ```ts
