@@ -85,7 +85,7 @@ tabsStore.filterTabs('TabGroup1', 'Book', FilterOption.StartsWith);
 You can also provide multiple tab names to a tab:
 ```html
 <SimpleTab tab-group="TabGroup2" :tab-name="['Tab1', 'Tab2']">
-    Open in Group 2 on Tab 4 and 2
+    Open On 'Tab1' and 'Tab2' but not on any other Tab.
 </SimpleTab>
 ```
 
