@@ -2,6 +2,19 @@
 
 Just a very simple Tab Plugin for Vue. Basically no styling. Just pure utility.
 
+## Table of Contents
+
+- [SimpleTabsVue](#simpletabsvue)
+  - [Table of Contents](#table-of-contents)
+  - [Usage](#usage)
+    - [Usage Example](#usage-example)
+    - [Switching Programmatically](#switching-programmatically)
+    - [Filter](#filter)
+      - [List of available filter options](#list-of-available-filter-options)
+    - [Multiple Tab Names](#multiple-tab-names)
+  - [Customizing](#customizing)
+    - [Styling Classes](#styling-classes)
+
 ## Usage
 
 You can define the components globaly as follows:
@@ -31,9 +44,9 @@ It is up to you where to place those components. There is no defined order you h
 
 SimpleTabSwitch can emit the events *beforeSwitchTab* and *afterSwitchTab* which return the previous and subsequent tab. There is also the possibility to provide the callback *onBeforeSwitch* that is called before the switch actually happening. When returning false the switch event will abort.
 
-### Additional Utility
+### Switching Programmatically
 
-You can also call to switch the tab in your code. Just use the tab store of the plugin and and call the *switchTab* method.
+You can also call to switch the tab in code. Just use the tab store and call the *switchTab* method.
 
 ```ts
 ...
@@ -45,12 +58,32 @@ function switchToTab2(){
 }
 ...
 ```
+### Filter
+
 The tab Store also provides a filter:
 
 ```ts
 // opens all tabs where the tab Name starts with 'Book'
 tabsStore.filterTabs('TabGroup1', 'Book', FilterOption.StartsWith);
 ```
+
+#### List of available filter options
+
+- `FilterOption.StartsWith` - Start with provided string.
+- `FilterOption.EndWith` - Ends with provided string.
+- `FilterOption.Contains` - Contains provided string.
+- `FilterOption.Regex` - Filter with provided regex string.
+
+### Multiple Tab Names
+
+You can also provide multiple tab names to a tab:
+```html
+<SimpleTab tab-group="TabGroup2" :tab-name="['Tab1', 'Tab2']">
+    Open in Group 2 on Tab 4 and 2
+</SimpleTab>
+```
+
+This is very usefull when you want a tab to be shown when 'Tab1' or 'Tab2' are open but not for example 'Tab3'.
 
 ## Customizing
 
