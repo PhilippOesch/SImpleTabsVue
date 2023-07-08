@@ -1,5 +1,5 @@
 <template>
-    <div class="simpleT-tab" v-if="isVisible">
+    <div :class="getClasses" v-if="isVisible">
         <slot></slot>
     </div>
 </template>
@@ -8,10 +8,22 @@
 import { computed } from 'vue';
 import { useSimpleTabsStore } from '@/composable/tabStore';
 
-const props = defineProps<{
+interface TabProps {
+    /**
+     * The tab group, this tab belongs to.
+     */
     tabGroup: string;
+    /**
+     * The Tab Identifier/s.
+     */
     tabName: string | string[];
-}>();
+    /**
+     * Custom CSS classes.
+     */
+    customClasses?: string[];
+}
+
+const props = defineProps<TabProps>();
 
 const tabStore = useSimpleTabsStore();
 
@@ -37,5 +49,13 @@ const isVisible = computed(() => {
         return tabSelected;
     }
     return false;
+});
+
+const getClasses = computed(() => {
+    const array = ['simpleT-tab'];
+    if (props.customClasses !== undefined) {
+        array.push(...props.customClasses);
+    }
+    return array.join(' ');
 });
 </script>

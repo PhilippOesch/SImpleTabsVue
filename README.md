@@ -14,6 +14,7 @@ Just a very simple Tab Plugin for Vue. Basically no styling. Just pure utility.
     - [Multiple Tab Names](#multiple-tab-names)
   - [Customizing](#customizing)
     - [Styling Classes](#styling-classes)
+    - [Adding Custom Classes](#adding-custom-classes)
 
 ## Usage
 
@@ -39,9 +40,9 @@ There is styling but it is really just meant for testing purposes. Just implemen
 ### Usage Example
 
 ```html
-<SimpleTabSwitch groupName="TabGroup1" defaultTab="Tab2" />
-<SimpleTab tabGroup="TabGroup1" tabName="Tab1">Tab1</SimpleTab>
-<SimpleTab tabGroup="TabGroup1" tabName="Tab2">Tab2</SimpleTab>
+<SimpleTabSwitch groupName="TabGroup" defaultTab="Tab2" />
+<SimpleTab tabGroup="TabGroup" tabName="Tab1">Tab1</SimpleTab>
+<SimpleTab tabGroup="TabGroup" tabName="Tab2">Tab2</SimpleTab>
 ```
 
 It is up to you where to place those components. There is no defined order you have to follow.
@@ -60,7 +61,7 @@ import { useSimpleTabsStore } from './composable/tabStore';
 const tabsStore = useSimpleTabsStore();
 
 function switchToTab2(){
-    tabsStore.switchTab('TabGroup1', 'Tab2');
+    tabsStore.switchTab('TabGroup', 'Tab2');
 }
 ...
 ```
@@ -70,7 +71,7 @@ The tab Store also provides a filter:
 
 ```ts
 // opens all tabs where the tab Name starts with 'Book'
-tabsStore.filterTabs('TabGroup1', 'Book', FilterOption.StartsWith);
+tabsStore.filterTabs('TabGroup', 'Book', FilterOption.StartsWith);
 ```
 
 #### List of available filter options
@@ -84,7 +85,7 @@ tabsStore.filterTabs('TabGroup1', 'Book', FilterOption.StartsWith);
 
 You can also provide multiple tab names to a tab:
 ```html
-<SimpleTab tab-group="TabGroup2" :tab-name="['Tab1', 'Tab2']">
+<SimpleTab tab-group="TabGroup" :tab-name="['Tab1', 'Tab2']">
     Open On 'Tab1' and 'Tab2' but not on any other Tab.
 </SimpleTab>
 ```
@@ -100,3 +101,17 @@ This is very usefull when you want a tab to be shown when 'Tab1' or 'Tab2' are o
 - simpleT-tabOpened -> added class to tab Button when tab is open
 - simpleT-tabClosed -> added class to tab Button when tab is closed
 - simpleT-tab -> tab class
+
+### Adding Custom Classes
+
+You can provide custom css classes for specific elements:
+
+```html
+...
+<!-- This Elements have custom css classes added  -->
+<SimpleTabSwitch :customBtnOpenClasses="['myBtnOpen']" :customBtnClasses="['myBtn']" :containerClasses="['mySwitchContainer']" groupName="TabGroup" defaultTab="Tab2" />
+<SimpleTab tab-group="TabGroup" :tab-name="['Tab1']" :classes=['myTab']">
+    Tab1
+</SimpleTab>
+...
+```

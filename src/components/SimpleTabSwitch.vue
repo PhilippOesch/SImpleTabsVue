@@ -1,6 +1,6 @@
 <template>
     <div
-        class="simpleT-tabSwitcher"
+        :class="getContainerClasses()"
         v-if="tabs.dataSet"
         :key="tabs.reactiveKey"
     >
@@ -41,6 +41,10 @@ interface SimpleTabSwitchProps {
      */
     defaultTab?: string;
     /**
+     * Classes added to the tab switch container.
+     */
+    customCtnClasses?: string[];
+    /**
      * Callback before a switch happens.
      * @param switchEvent the switch event that took place.
      * @returns whether to continue the switch event.
@@ -73,6 +77,13 @@ function getCustomBtnClasses(): string {
         return props.customBtnClasses.join(' ');
     }
     return '';
+}
+
+function getContainerClasses(): string {
+    if (props.customCtnClasses === undefined) {
+        return 'simpleT-tabSwitcher';
+    }
+    return ['simpleT-tabSwitcher', ...props.customCtnClasses].join(' ');
 }
 
 function getBtnOpenClasses(): string {
