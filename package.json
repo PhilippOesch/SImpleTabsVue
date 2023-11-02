@@ -1,64 +1,64 @@
 {
-    "name": "simple-tabs-vue",
-    "private": false,
-    "version": "0.1.14",
-    "type": "module",
-    "description": "Just a very simple Tab Plugin for Vue. Basically no styling. Just pure component and pure utility.",
-    "license": "MIT",
-    "keywords": [
-        "vue",
-        "components",
-        "plugin",
-        "simple",
-        "ui",
-        "unstyled",
-        "utility",
-        "unstyled components",
-        "components library",
-        "tabs",
-        "filter",
-        "vue components",
-        "tab switch",
-        "flexible tabs",
-        "unstyled tabs"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/PhilippOesch/SImpleTabsVue.git"
+  "name": "simple-tabs-vue",
+  "private": false,
+  "version": "0.1.15",
+  "type": "module",
+  "description": "Just a very simple Tab Plugin for Vue. Basically no styling. Just pure component and pure utility.",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "components",
+    "plugin",
+    "simple",
+    "ui",
+    "unstyled",
+    "utility",
+    "unstyled components",
+    "components library",
+    "tabs",
+    "filter",
+    "vue components",
+    "tab switch",
+    "flexible tabs",
+    "unstyled tabs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhilippOesch/SImpleTabsVue.git"
+  },
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/dts/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/dts/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
     },
-    "main": "dist/index.cjs.js",
-    "module": "dist/index.es.js",
-    "types": "dist/dts/index.d.ts",
-    "exports": {
-        ".": {
-            "types": "./dist/dts/index.d.ts",
-            "import": "./dist/index.es.js",
-            "require": "./dist/index.cjs.js"
-        },
-        "./styles.css": "./dist/index.css"
-    },
-    "scripts": {
-        "dev": "vite",
-        "types": "vue-tsc --declaration --emitDeclarationOnly",
-        "build": "vue-tsc && vite build && pnpm types",
-        "preview": "vite preview",
-        "test": "vitest",
-        "coverage": "vitest run --coverage"
-    },
-    "dependencies": {
-        "vue": "^3.2.47"
-    },
-    "devDependencies": {
-        "@types/node": "^20.1.4",
-        "@vitejs/plugin-vue": "^4.1.0",
-        "@vitest/coverage-c8": "^0.31.1",
-        "@vue/test-utils": "^2.3.2",
-        "jsdom": "^22.0.0",
-        "path": "^0.12.7",
-        "typescript": "^5.0.2",
-        "vite": "^4.4.2",
-        "vite-plugin-dts": "^2.3.0",
-        "vitest": "^0.31.0",
-        "vue-tsc": "^1.4.2"
-    }
+    "./styles.css": "./dist/index.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "types": "vue-tsc --declaration --emitDeclarationOnly",
+    "build": "vue-tsc && vite build && pnpm types",
+    "preview": "vite preview",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@types/node": "^20.1.4",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "@vitest/coverage-c8": "^0.31.1",
+    "@vue/test-utils": "^2.3.2",
+    "jsdom": "^22.0.0",
+    "path": "^0.12.7",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.2",
+    "vite-plugin-dts": "^2.3.0",
+    "vitest": "^0.31.0",
+    "vue-tsc": "^1.4.2"
+  }
 }
